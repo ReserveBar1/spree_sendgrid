@@ -15,7 +15,7 @@ Spree::User.class_eval do
   
   def create_subscriptions
     unless self.email.ends_with?("example.net")
-      if newsletter_subscripttion = Spree::NewsSubscription.newsletter.find_by_email(self.email)
+      if newsletter_subscription = Spree::NewsSubscription.newsletter.find_by_email(self.email)
         self.preferred_newsletter_subscription = true
         newsletter_subscription.update_attribute(:user_id, self.id)
       else
